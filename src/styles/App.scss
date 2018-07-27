@@ -23,13 +23,24 @@ body {
 
 .header {
   width: 100%;
-  padding: 20px 0;
-  background-color: $test;
+
+  &--top {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+    background-color: $test;
+  }
 
   &__text {
     margin-top: 0;
     text-align: center;
     color: white;
+  }
+
+  &__svg {
+    width: 80px;
+    height: 80px;
+    background: url('../assets/svg/bracelet.svg')
   }
 }
 

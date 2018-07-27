@@ -4,12 +4,17 @@ import Navbar from './Navbar.js';
 class Header extends React.Component {
   render() {
     return (
-      <div className="header--outer">
-      <div className="header header__text">
-        <h1 className="header__text">Pokémon Database</h1>
-        <p className="header__text">Lorem ipsum dolor sit amet, eam saperet utroque sensibus te.</p>
-      </div>
-      <Navbar />
+      <div className="header">
+        <div className="header--top">
+          <div className="header--left">
+            <div className="header__svg"></div>
+          </div>
+          <div className="header--right">
+            <h1 className="header__text">Pokémon Database</h1>
+            <p className="header__text">ポケットモンスター データベース</p>
+          </div>
+        </div>
+        <Navbar />
       </div>
     );
   }
