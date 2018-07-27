@@ -1,0 +1,41 @@
+$test: #cd5c5c;
+
+html {
+  height: 100%;
+}
+
+body {
+  font-size: 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 100%;
+  background-color: #dddad7 !important;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+#root {
+  font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #4d4d4d;
+  margin: 0;
+}
+
+.header {
+  width: 100%;
+  padding: 20px 0;
+  background-color: $test;
+
+  &__text {
+    margin-top: 0;
+    text-align: center;
+    color: white;
+  }
+}
+
+.navbar {
+  background-color: #873838;
+  border-radius: 0;
+  width: 100%;
+  min-height: 30px;
+}
