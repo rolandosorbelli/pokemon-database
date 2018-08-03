@@ -2,7 +2,7 @@ import React from 'react';
 import apiCredentials from '../secret/api-credentials.json'
 
 const apikey = apiCredentials.apikey
-const api = `https://eu.api.battle.net/wow/zone/?locale=en_GB&apikey=${apikey}`;
+export const api = `https://eu.api.battle.net/wow/zone/?locale=en_GB&apikey=${apikey}`;
 
 class ApiCall extends React.Component {
 
