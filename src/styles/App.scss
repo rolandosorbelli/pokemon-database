@@ -38,9 +38,11 @@ body {
   }
 
   &__svg {
-    width: 80px;
-    height: 80px;
-    background: url('../assets/svg/bracelet.svg')
+    width: 48px;
+    height: 48px;
+    background: url('../assets/svg/WoW_icon.svg');
+    position: relative;
+    right: 10px;
   }
 }
 

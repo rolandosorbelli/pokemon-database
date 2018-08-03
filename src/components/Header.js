@@ -10,8 +10,8 @@ class Header extends React.Component {
             <div className="header__svg"></div>
           </div>
           <div className="header--right">
-            <h1 className="header__text">Pokémon Database</h1>
-            <p className="header__text">ポケットモンスター データベース</p>
+            <h1 className="header__text">WoW Dungeons and Raids Database</h1>
+            <p className="header__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
           </div>
         </div>
         <Navbar />

@@ -1,6 +1,8 @@
 import React from 'react';
+import apiCredentials from '../secret/api-credentials.json'
 
-const api = 'https://pokeapi.co/api/v2/pokemon/?limit=10';
+const apikey = apiCredentials.apikey
+const api = `https://eu.api.battle.net/wow/zone/?locale=en_GB&apikey=${apikey}`;
 
 class ApiCall extends React.Component {
 
@@ -20,25 +22,33 @@ class ApiCall extends React.Component {
   fetchData(){
     fetch(api)
     .then(response => response.json())
-    .then(parsedJSON => parsedJSON.results.map(item => (
+    // .then(parsedJSON => console.log(parsedJSON))
+    .then(parsedJSON => parsedJSON.zones.map(item => (
       {
         name: `${item.name}`,
-        height: `${item.id}`
+        id: `${item.id}`,
+        description: `${item.description}`
       }
     )))
     .then(database => this.setState({
       database,
       isLoading: false
     }))
-    .catch(error => console.log('You failed!', error))
+    .catch(error => console.log('Failed to fetch data from the API', error))
   }
 
   render() {
     const {isLoading, database} = this.state;
+    console.log(database)
     return (
       <ul>
         { !isLoading && database.length > 0 ? database.map(item => {
-          return <li key={item.id}>{item.name}</li>
+          return (
+          <div key={item.id}>
+            <p>{item.name}</p>
+            <p>{item.description}</p>
+          </div>
+        )
         }) : null
       }
     </ul>
