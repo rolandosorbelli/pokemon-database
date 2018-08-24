@@ -46,6 +46,7 @@ class Home extends React.Component {
           database={this.state.database}
           handleResults={this.showResults}
         />
+      <p>{this.state.results.name}</p>
       </div>
     );
   }
