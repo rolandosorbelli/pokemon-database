@@ -1,60 +1,47 @@
-import React from 'react';
 import apiCredentials from '../secret/api-credentials.json'
 
 const apikey = apiCredentials.apikey
-export const api = `https://eu.api.battle.net/wow/zone/?locale=en_GB&apikey=${apikey}`;
+const api = `https://eu.api.battle.net/wow/zone/?locale=en_GB&apikey=${apikey}`;
 
-class ApiCall extends React.Component {
+// const apiCall = () => {
+//   let results
+//   fetch(api)
+//   .then(response => response.json())
+//   // .then(parsedJSON => console.log(parsedJSON))
+//   .then(parsedJSON => parsedJSON.zones.map(item => (
+//     {
+//       name: item.name,
+//       id: item.id
+//     }
+//   )))
+//   .then(data => results = data)
+//   .catch(error => console.log('Failed to fetch data from the API', error))
+//
+//   return results
+// }
+//
+// export default apiCall
 
-  constructor(props){
-    super(props);
 
-    this.state = {
-      isLoading: true,
-      database: []
-    };
+
+class Api {
+  async fetch(endPoint = '', zoneId = '') {
+
+    const apiPath = `https://eu.api.battle.net/wow/${endPoint}/${zoneId}?locale=en_GB&apikey=${apikey}`
+    const config = {
+      method: 'GET',
+      mode: 'cors',
+    }
+
+    console.log(apiPath)
+    const data = await fetch(apiPath, config)
+      .then(res => res.json())
+      .catch(e => {
+        throw new Error('Failed to fetch data from the API', e)
+      })
+
+    return data
   }
-
-  componentDidMount() {
-    this.fetchData();
-  }
-
-  fetchData(){
-    fetch(api)
-    .then(response => response.json())
-    // .then(parsedJSON => console.log(parsedJSON))
-    .then(parsedJSON => parsedJSON.zones.map(item => (
-      {
-        name: `${item.name}`,
-        id: `${item.id}`,
-        description: `${item.description}`
-      }
-    )))
-    .then(database => this.setState({
-      database,
-      isLoading: false
-    }))
-    .catch(error => console.log('Failed to fetch data from the API', error))
-  }
-
-  render() {
-    const {isLoading, database} = this.state;
-    console.log(database)
-    return (
-      <ul>
-        { !isLoading && database.length > 0 ? database.map(item => {
-          return (
-          <div key={item.id}>
-            <p>{item.name}</p>
-            <p>{item.description}</p>
-          </div>
-        )
-        }) : null
-      }
-    </ul>
-  )
 }
 
-}
-
-export default ApiCall;
+export default new Api()

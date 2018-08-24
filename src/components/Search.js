@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
+import Api from '../api/index.js'
 // import * as api from '../api/index.js';
 
 import apiCredentials from '../secret/api-credentials.json'
@@ -13,29 +14,36 @@ class Search extends Component {
     results: []
   }
 
-  getInfo = () => {
-    axios.get(`https://eu.api.battle.net/wow/zone/${this.state.query}?locale=en_GB&apikey=${apikey}`)
-    .then(({ data }) => {
-      console.log(data)
-      this.setState({
-        results: data.data
-      })
-    })
-  }
-
   handleInputChange = () => {
     this.setState({
-      query: this.search.value
+      query: this.search.value.toLowerCase()
     }, () => {
-      if (this.state.query && this.state.query.length > 1) {
+      if (this.state.query && this.state.query.length >= 3) {
         if (this.state.query.length % 2 === 0) {
-          this.getInfo()
+          this.getIdFromName()
         }
       }
     })
   }
 
+  getIdFromName = async () => {
+    let result
+    Object.keys(this.props.database).forEach(key => {
+      const zoneName = this.props.database[key].name.toLowerCase()
+      if (zoneName.includes(this.state.query))
+        result = this.props.database[key].id
+
+      return
+    })
+
+    if (result)
+      this.props.handleResults(result)
+  }
+
   render() {
+    if (this.props.database.length === 0)
+      return null
+
     return (
       <div className="main">
         <form>
@@ -44,7 +52,7 @@ class Search extends Component {
             ref={input => this.search = input}
             onChange={this.handleInputChange}
             />
-          <p>{this.state.results}</p>
+          <p>{}</p>
         </form>
       </div>
     )
