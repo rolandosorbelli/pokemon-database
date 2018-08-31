@@ -2,6 +2,7 @@ import React from 'react'
 import Header from '../components/Header/index'
 import Api from '../api/index'
 import Search from '../components/Search/index'
+import Suggestions from '../components/Suggestions/index'
 
 class Home extends React.Component {
 
@@ -23,7 +24,12 @@ class Home extends React.Component {
     const filtered = data.zones.map(item => {
       return {
         name: item.name,
-        id: item.id
+        id: item.id,
+        location: item.location.name,
+        numPlayers: item.numPlayers,
+        description: item.description,
+        dungeon: item.isDungeon,
+        raid: item.isRaid
       }
     })
     this.setState({ database: filtered })
@@ -35,19 +41,19 @@ class Home extends React.Component {
     b = b.name.startsWith('The ') ? b.name.replace('The ', '') : b.name
 
     if (a < b)
-      return -1;
+    return -1;
     if (a > b)
-      return 1;
+    return 1;
     return 0;
   }
 
   showResults = async (data) => {
-  
+    console.log(data)
+
     let result = []
     await data.forEach(item => {
       // Api.fetch('zone', item)
       this.state.database.forEach(data => {
-        // console.log(data.id, item)
         if (data.id === item) {
           return result.push(data)
         }
@@ -55,30 +61,22 @@ class Home extends React.Component {
       return result
     })
     const sortedResult = result.sort(this.compare)
-    console.log(sortedResult)
-
     this.setState({ results: sortedResult})
   }
 
   render() {
-
-
     return (
       <div className="wrapper">
         <Header />
         <Search
           database={this.state.database}
           handleResults={this.showResults}
-        />
-      {this.state.results.map(item => {
-        return(
-          <div key={item.id}>
-            <p>{item.name}</p>
-          </div>
-        )
-      })}
+          />
+        <Suggestions
+          results={this.state.results}
+          />
       </div>
-    );
+    )
   }
 }
 
