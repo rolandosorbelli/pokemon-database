@@ -10,6 +10,9 @@ class Search extends Component {
     this.setState({
       query: this.search.value.toLowerCase()
     }, () => {
+      if(this.state.query === '') {
+        this.props.handleResults([])
+      }
       if (this.state.query && this.state.query.length >= 1) {
         this.getIdFromName()
       }

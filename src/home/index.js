@@ -42,7 +42,7 @@ class Home extends React.Component {
   }
 
   showResults = async (data) => {
-
+  
     let result = []
     await data.forEach(item => {
       // Api.fetch('zone', item)
