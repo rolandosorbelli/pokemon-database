@@ -1,7 +1,7 @@
 import React from 'react'
-import Header from '../components/Header'
+import Header from '../components/Header/index'
 import Api from '../api/index'
-import Search from '../components/Search'
+import Search from '../components/Search/index'
 
 class Home extends React.Component {
 
