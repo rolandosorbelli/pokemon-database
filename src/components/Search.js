@@ -10,20 +10,18 @@ class Search extends Component {
     this.setState({
       query: this.search.value.toLowerCase()
     }, () => {
-      if (this.state.query && this.state.query.length >= 3) {
-        if (this.state.query.length % 2 === 0) {
-          this.getIdFromName()
-        }
+      if (this.state.query && this.state.query.length >= 1) {
+        this.getIdFromName()
       }
     })
   }
 
   getIdFromName = async () => {
-    let result
+    let result = []
     Object.keys(this.props.database).forEach(key => {
       const zoneName = this.props.database[key].name.toLowerCase()
       if (zoneName.includes(this.state.query))
-        result = this.props.database[key].id
+        result.push(this.props.database[key].id)
 
       return
     })
@@ -37,15 +35,15 @@ class Search extends Component {
       return null
 
     return (
-      <div className="button_box2">
-        <form className="form-wrapper-2 cf">
+      <div className="searchbar--wrapper">
+        <form className="searchbar cf">
           <input
             type="text"
             placeholder="Search for..."
             ref={input => this.search = input}
             onChange={this.handleInputChange}
             />
-          <button type="submit">Search</button>
+          <button className="searchbar__button" type="submit">Search</button>
         </form>
       </div>
     )
