@@ -52,7 +52,7 @@ class Home extends React.Component {
 
     let result = []
     await data.forEach(item => {
-      // Api.fetch('zone', item)
+      Api.fetch('zone', item)
       this.state.database.forEach(data => {
         if (data.id === item) {
           return result.push(data)

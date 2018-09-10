@@ -21,6 +21,10 @@ body {
   margin: 0;
 }
 
+/*
+  Header
+*/
+
 .header {
   width: 100%;
 
@@ -58,9 +62,10 @@ body {
   text-align: center;
 }
 
-/* search box */
+/*
+  search box
+*/
 
-/*-------------------------------------*/
 .cf:before, .cf:after{
   content:"";
   display:table;
@@ -71,7 +76,6 @@ body {
 .cf{
   zoom:1;
 }
-/*-------------------------------------*/
 
 .searchbar {
   margin: 0 auto;
@@ -172,6 +176,47 @@ body {
   &__button::-moz-focus-inner {
     border: 0;
     padding: 0;
+  }
+
+}
+
+/*
+  Suggestions
+*/
+
+.suggestions {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20px 0;
+
+  &--card {
+    display: inline-block;
+    width: calc(100% * (1/4) - 10px - 10px);
+    height: auto;
+    background-color: #FFF;
+    margin: 10px;
+    padding: 20px;
+
+    p {
+      margin-bottom: 15px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid grey;
+    }
+
+    &__header {
+      display: flex;
+      flex-wrap: wrap;
+
+      p {
+        flex-grow: 1;
+
+        &:last-of-type {
+          text-align: right;
+        }
+      }
+    }
   }
 
 }
