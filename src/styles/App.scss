@@ -1,24 +1,62 @@
-$test: #cd5c5c;
+/*
+Fonts
+*/
+
+$sans: 'Raleway', sans-serif;
+
+/*
+  Variables
+*/
+
+$light-red: #cd5c5c;
+$light-grey: #dcdcdc;
+$dark-grey: #a9a9a9;
 
 html {
   height: 100%;
+  font-size: 14px;
 }
 
 body {
-  font-size: 100%;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
   height: 100%;
-  background-color: #dddad7 !important;
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  background-color: #000;
 }
 
 #root {
-  font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: #4d4d4d;
   margin: 0;
+}
+
+.background {
+  background: url(../assets/img/background2.jpg) center;
+  background-size: cover;
+  // filter: blur(2px);
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100vh;
+  // z-index: -1;
+  // transform: scale(1.1);
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(#000,0) 35%, rgba(#000,0.7) 90%, #000 100%);
+
+  }
+}
+
+/*
+  Content
+*/
+
+.content {
+  position: relative;
 }
 
 /*
@@ -27,12 +65,12 @@ body {
 
 .header {
   width: 100%;
+  padding-top: 50px;
 
   &--top {
     display: flex;
     justify-content: center;
     padding: 20px 0;
-    background-color: $test;
   }
 
   &__text {
@@ -51,7 +89,6 @@ body {
 }
 
 .navbar {
-  background-color: #873838;
   border-radius: 0;
   width: 100%;
   min-height: 30px;
@@ -148,7 +185,7 @@ body {
   }
 
   &__button:hover{
-    background: $test;
+    background: $light-red;
   }
 
   &__button:focus{
@@ -166,7 +203,7 @@ body {
   }
 
   &__button:hover:before{
-    border-right-color: $test;
+    border-right-color: $light-red;
   }
 
   &__button:focus:before{
@@ -189,7 +226,22 @@ body {
   height: auto;
   display: flex;
   flex-wrap: wrap;
-  margin: 20px 0;
+  padding: 20px 40px;
+  font-family: $sans;
+  font-size: 1rem;
+  line-height: 1.4rem;
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to bottom, rgba(#000,0) 10%, #000 20%);
+    z-index: -1;
+  }
 
   &--card {
     display: inline-block;
@@ -200,7 +252,7 @@ body {
     padding: 20px;
 
     &--content--section {
-      margin-bottom: 15px;
+      margin-bottom: 10px;
       padding-bottom: 10px;
       border-bottom: 1px solid #dcdcdc;
 
@@ -231,10 +283,13 @@ body {
         padding-bottom: 10px;
         text-transform: uppercase;
         border-bottom: 1px solid #dcdcdc;
+        font-weight: bold;
+        color: $dark-grey;
 
         &:last-of-type {
           text-align: right;
           text-transform: lowercase;
+          color: $light-red;
         }
       }
     }

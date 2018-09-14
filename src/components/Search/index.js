@@ -13,7 +13,7 @@ class Search extends Component {
       if(this.state.query === '') {
         this.props.handleResults([])
       }
-      if (this.state.query && this.state.query.length >= 1) {
+      if (this.state.query && this.state.query.length >= 3) {
         this.getIdFromName()
       }
     })
@@ -31,6 +31,7 @@ class Search extends Component {
 
     if (result)
       this.props.handleResults(result)
+      console.log(this.props.handleResults(result))
   }
 
   render() {
