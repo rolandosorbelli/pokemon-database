@@ -5,7 +5,7 @@ Fonts
 $sans: 'Raleway', sans-serif;
 
 /*
-  Variables
+Variables
 */
 
 $light-red: #cd5c5c;
@@ -30,7 +30,7 @@ body {
 }
 
 .background {
-  background: url(../assets/img/background2.jpg) center;
+  background: url(../assets/img/background2.jpg) top;
   background-size: cover;
   // filter: blur(2px);
   position: absolute;
@@ -52,7 +52,7 @@ body {
 }
 
 /*
-  Content
+Content
 */
 
 .content {
@@ -60,7 +60,7 @@ body {
 }
 
 /*
-  Header
+Header
 */
 
 .header {
@@ -100,7 +100,7 @@ body {
 }
 
 /*
-  search box
+search box
 */
 
 .cf:before, .cf:after{
@@ -218,7 +218,7 @@ body {
 }
 
 /*
-  Suggestions
+Suggestions
 */
 
 .suggestions {
@@ -250,6 +250,18 @@ body {
     background-color: #FFF;
     margin: 10px;
     padding: 20px;
+    opacity: 0;
+    animation-name: slideUp, fadeIn;
+    $animationSpeed: 1.5s;
+    animation-duration: $animationSpeed, $animationSpeed / 2;
+    animation-delay: .9s;
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+    visibility: visible !important;
+
+    @for $i from 1 to 9 {
+      &:nth-child(#{$i}) { animation-delay: $i * 0.1s; }
+    }
 
     &--content--section {
       margin-bottom: 10px;
@@ -295,4 +307,25 @@ body {
     }
   }
 
+  /*
+  Slide Up Effect
+  */
+
+  @keyframes slideUp {
+    0% {
+      transform: translateY(100%);
+    }
+    100% {
+      transform: translateY(0%);
+    }
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 }
