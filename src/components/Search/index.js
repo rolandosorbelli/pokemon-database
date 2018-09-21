@@ -31,7 +31,6 @@ class Search extends Component {
 
     if (result)
       this.props.handleResults(result)
-      console.log(this.props.handleResults(result))
   }
 
   render() {

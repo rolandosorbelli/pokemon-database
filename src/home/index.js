@@ -1,38 +1,15 @@
 import React from 'react'
-import Header from '../components/Header/index'
-import Api from '../api/index'
-import Search from '../components/Search/index'
-import Suggestions from '../components/Suggestions/index'
+import Header from '../components/Header'
+import Search from '../components/Search'
+import Suggestions from '../components/Suggestions'
 
 class Home extends React.Component {
 
   constructor(props){
     super(props)
-
     this.state = {
-      database: [],
       results: [],
     }
-  }
-
-  componentDidMount(){
-    this.fetchData()
-  }
-
-  fetchData = async () => {
-    const data = await Api.fetch('zone')
-    const filtered = data.zones.map(item => {
-      return {
-        name: item.name,
-        id: item.id,
-        location: item.location.name,
-        numPlayers: item.numPlayers,
-        description: item.description,
-        dungeon: item.isDungeon,
-        raid: item.isRaid
-      }
-    })
-    this.setState({ database: filtered })
   }
 
   compare = (a,b) => {
@@ -48,12 +25,10 @@ class Home extends React.Component {
   }
 
   showResults = async (data) => {
-    console.log(data)
 
     let result = []
     await data.forEach(item => {
-      Api.fetch('zone', item)
-      this.state.database.forEach(data => {
+      this.props.database.forEach(data => {
         if (data.id === item) {
           return result.push(data)
         }
@@ -69,7 +44,7 @@ class Home extends React.Component {
       <div className="wrapper">
         <Header />
         <Search
-          database={this.state.database}
+          database={this.props.database}
           handleResults={this.showResults}
           />
         <Suggestions

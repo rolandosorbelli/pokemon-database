@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 const Suggestions = (props) => {
   return (
@@ -22,7 +23,7 @@ const Suggestions = (props) => {
           <div key={item.id} className="suggestions--card">
             <div className="suggestions--card--header">
               <p>{type}</p>
-              <p>See more</p>
+              <p><NavLink to={'/zone/' + item.id}>See more</NavLink></p>
             </div>
             <div className="suggestions--card--content">
               <div className="suggestions--card--content--section">
