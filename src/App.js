@@ -11,7 +11,7 @@ class App extends Component {
         <main>
           <div className="background"></div>
           <div className="content">
-            <Route path="/" component={Home} exact />
+            <Route path={process.env.PUBLIC_URL + '/'} component={Home} exact />
             <Route path="/test" component={Test} />
           </div>
         </main>
