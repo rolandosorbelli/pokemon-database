@@ -11,7 +11,7 @@ class Api {
       mode: 'cors',
     }
 
-    console.log(apiPath)
+    // console.log(apiPath)
     const data = await fetch(apiPath, config)
       .then(res => res.json())
       .catch(e => {

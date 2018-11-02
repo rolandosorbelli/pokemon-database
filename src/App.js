@@ -26,6 +26,7 @@ class App extends Component {
       return {
         name: item.name,
         id: item.id,
+        urlSlug: item.urlSlug,
         location: item.location.name,
         numPlayers: item.numPlayers,
         description: item.description,
@@ -52,7 +53,7 @@ class App extends Component {
           <div className="background"></div>
           <div className="content">
             <Route path={process.env.PUBLIC_URL + '/'} component={homePage} exact />
-            <Route path={process.env.PUBLIC_URL + '/zone/:id'} component={zonePage} />
+            <Route path={process.env.PUBLIC_URL + '/zone/:urlSlug/:id?'} component={zonePage} />
           </div>
         </main>
       </BrowserRouter>
