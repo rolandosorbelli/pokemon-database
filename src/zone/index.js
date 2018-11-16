@@ -6,13 +6,11 @@ const apikey = apiCredentials.apikey
 class Zones extends Component {
   constructor(props){
     super(props);
-    console.log(this.props)
     this.state = {
       matchingId: this.props.match.params.id,
       database: this.props.database,
-      zoneInfo: '',
+      zoneInfo: {},
     };
-    console.log(this.props)
   }
 
   componentDidMount() {
@@ -34,18 +32,18 @@ class Zones extends Component {
       mode: 'cors',
     }
 
-    const data = await fetch(apiPath, config)
-      .then(res => res.json())
-      .catch(e => {
-        throw new Error('Failed to fetch data from the API', e)
-      })
-    this.setState({ zoneInfo: data })
-    console.log(this.state.zoneInfo)
+    fetch(apiPath, config)
+    .then(res => res.json())
+    .then(res => this.setState({ zoneInfo: res }))
+    .catch(e => {
+      throw new Error('Failed to fetch data from the API', e)
+    })
   }
 
   render() {
     return (
       <div className="zone">
+        {this.state.zoneInfo.name}
       </div>
     )
   }
