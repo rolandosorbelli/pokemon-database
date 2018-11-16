@@ -41,10 +41,27 @@ class Zones extends Component {
   }
 
   render() {
+
+    let extraInfo
+    (this.state.zoneInfo.description === '' ? extraInfo = 'No description available' : extraInfo = '')
+
+    if (this.state.zoneInfo.location) {
+      const location = this.state.zoneInfo.location
+      return (
+        <div className="zone">
+          <div className="zone--title">
+            <h1>{this.state.zoneInfo.name}</h1>
+          </div>
+          <div className="zone--section">
+            <div className="zone--section--description">{this.state.zoneInfo.description}{extraInfo}</div>
+            <div className="zone--section--location">{location.name}</div>
+          </div>
+        </div>
+      )
+    }
+
     return (
-      <div className="zone">
-        {this.state.zoneInfo.name}
-      </div>
+      <div></div>
     )
   }
 }
