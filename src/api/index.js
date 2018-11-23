@@ -1,11 +1,11 @@
 import apiCredentials from '../secret/api-credentials.json'
 
-const apikey = apiCredentials.apikey
+const accessToken = apiCredentials.accessToken
 
 class Api {
   async fetch(endPoint = '', zoneId = '') {
 
-    const apiPath = `https://eu.api.battle.net/wow/${endPoint}/${zoneId}?locale=en_GB&apikey=${apikey}`
+    const apiPath = `https://eu.api.blizzard.com/wow/${endPoint}/${zoneId}?locale=en_GB&access_token=${accessToken}`
     const config = {
       method: 'GET',
       mode: 'cors',
