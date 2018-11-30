@@ -1,22 +1,30 @@
 import apiCredentials from '../secret/api-credentials.json'
 
-const accessToken = apiCredentials.accessToken
+const clientId = apiCredentials.clientId
+const clientSecret = apiCredentials.clientSecret
 
 class Api {
+
   async fetch(endPoint = '', zoneId = '') {
 
-    const apiPath = `https://eu.api.blizzard.com/wow/${endPoint}/${zoneId}?locale=en_GB&access_token=${accessToken}`
+    const apiUri = `https://eu.battle.net/oauth/token?grant_type=client_credentials&client_id=${clientId}&client_secret=${clientSecret}`
     const config = {
       method: 'GET',
       mode: 'cors',
     }
 
-    // console.log(apiPath)
+    const credentials = await fetch(apiUri, config)
+    .then(res => res.json())
+    .catch(e => {
+      throw new Error('Failed to fetch data from the API', e)
+    })
+
+    const apiPath = `https://eu.api.blizzard.com/wow/${endPoint}/${zoneId}?locale=en_GB&access_token=${credentials.access_token}`
     const data = await fetch(apiPath, config)
-      .then(res => res.json())
-      .catch(e => {
-        throw new Error('Failed to fetch data from the API', e)
-      })
+    .then(res => res.json())
+    .catch(e => {
+      throw new Error('Failed to fetch data from the API', e)
+    })
 
     return data
   }
