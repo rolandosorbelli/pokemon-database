@@ -103,6 +103,20 @@ class Zones extends Component {
               </div>
             </div>
           </div>
+          <div className="bosses__section">
+            {zoneInfo.bosses.map(item => {
+
+              let noDescr
+              (!item.hasOwnProperty('description') ? noDescr = 'No description available' : noDescr = '')
+
+              return (
+                <div key={item.id} className="bosses__card">
+                  <div className="bosses__title">{item.name}</div>
+                  <div className="bosses__description">{item.description}{noDescr}</div>
+                </div>
+              )
+            })}
+          </div>
         </div>
       )
     }

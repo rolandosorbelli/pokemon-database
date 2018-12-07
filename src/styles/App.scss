@@ -58,7 +58,7 @@ Variables
 */
 
 $light-red: #cd5c5c;
-$light-grey: #dcdcdc;
+$light-grey: #efefef;
 $dark-grey: #a9a9a9;
 
 html {
@@ -424,14 +424,81 @@ Suggestions
   &__card {
     display: inline-block;
     height: auto;
-    background-color: #FFF;
+    background-color: $light-grey;
     padding: 20px;
-    border: 1px solid $light-grey;
+
+    @include for-phone-only {
+      width: calc(100% * (4/4) - 10px - 10px);
+    }
+
+    @media screen and (min-width: 600px) and (max-width: 900px) {
+      width: calc(100% * (4/4) - 10px - 10px);
+    }
 
     &__title {
       padding-bottom: 10px;
       font-weight: bold;
       color: $light-red;
     }
+  }
+}
+
+.bosses {
+
+  &__card {
+    display: inline-block;
+    width: calc(100% * (1.333/4) - 10px - 10px);
+    height: auto;
+    background-color: #FFF;
+    margin: 10px;
+    padding: 20px;
+    opacity: 0;
+    animation-name: slideUp, fadeIn;
+    $animationSpeed: 1.5s;
+    animation-duration: $animationSpeed, $animationSpeed / 2;
+    animation-delay: .9s;
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+    visibility: visible !important;
+
+    @include for-phone-only {
+      width: calc(100% * (4/4) - 10px - 10px);
+    }
+
+    @include for-tablet-portrait-up {
+      width: calc(100% * (4/4) - 10px - 10px);
+    }
+
+    @include for-tablet-landscape-up {
+      width: calc(100% * (2/4) - 10px - 10px);
+    }
+
+    @include for-desktop-up {
+      width: calc(100% * (1.333/4) - 10px - 10px)
+    }
+  }
+
+  &__section {
+    padding: 80px 5%;
+    background-color: transparent;
+    width: 100%;
+    font-family: $sans;
+    font-size: 1.2rem;
+    line-height: 2rem;
+    color: #4d4d4d;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__title {
+    padding-bottom: 20px;
+    font-weight: bold;
+    color: $light-red;
+    border-bottom: 1px solid #dcdcdc;
+  }
+
+  &__description {
+    text-align: justify;
+    padding: 20px 0;
   }
 }
