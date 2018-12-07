@@ -64,6 +64,8 @@ $dark-grey: #a9a9a9;
 html {
   height: 100%;
   font-size: 14px;
+  overflow-x: scroll;
+  -webkit-overflow-scrolling: touch;
 }
 
 body {
@@ -177,7 +179,8 @@ search box
     height: 50px;
     padding: 10px 5px;
     float: left;
-    font: 15px 'Raleway', sans-serif;
+    font-family: 'Raleway', sans-serif;
+    font-size: inherit;
     border: 0;
     background: #fff;
   }
@@ -185,6 +188,7 @@ search box
   input:focus {
     outline: 0;
     background: #fff;
+    font-size: inherit;
   }
 
   input::-webkit-input-placeholder {
@@ -501,4 +505,10 @@ Suggestions
     text-align: justify;
     padding: 20px 0;
   }
+}
+
+.navbar {
+  height: 50px;
+  width: 100%;
+  position: fixed;
 }
