@@ -24,7 +24,7 @@ const Suggestions = (props) => {
           <div key={item.id} className="suggestions--card">
             <div className="suggestions--card--header">
               <p>{type}</p>
-              <p><NavLink to={'/zone/' + item.urlSlug + '/' + item.id}>See more</NavLink></p>
+              <p><NavLink to={process.env.PUBLIC_URL + '/zone/' + item.urlSlug + '/' + item.id}>See more</NavLink></p>
             </div>
             <div className="suggestions--card--content">
               <div className="suggestions--card--content--section">
