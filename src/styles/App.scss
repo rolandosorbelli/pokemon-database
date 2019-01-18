@@ -417,6 +417,18 @@ Suggestions
     font-size: 1.2rem;
     line-height: 2rem;
     color: #4d4d4d;
+
+    @include for-phone-only {
+      padding: 0 5%;
+    }
+
+    @include for-tablet-portrait-up {
+      padding: 0 5%;
+    }
+
+    @include for-desktop-up {
+      padding: 0 20%;
+    }
   }
 
   &__content {
