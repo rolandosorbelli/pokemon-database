@@ -180,7 +180,7 @@ search box
     padding: 10px 5px;
     float: left;
     font-family: 'Raleway', sans-serif;
-    font-size: inherit;
+    font-size: initial;
     border: 0;
     background: #fff;
   }
@@ -188,7 +188,7 @@ search box
   input:focus {
     outline: 0;
     background: #fff;
-    font-size: inherit;
+    font-size: initial;
   }
 
   input::-webkit-input-placeholder {
