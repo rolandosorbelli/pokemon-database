@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom'
 import apiCredentials from '../secret/api-credentials.json'
 
 const clientId = apiCredentials.clientId
@@ -116,6 +117,9 @@ class Zones extends Component {
                 </div>
               )
             })}
+          </div>
+          <div className="back__button">
+            <NavLink to={process.env.PUBLIC_URL + '/'}>Back</NavLink>
           </div>
         </div>
       )
